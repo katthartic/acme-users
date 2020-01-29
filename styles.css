@@ -1,4 +1,39 @@
-div{
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 1rem;
+}
+
+div {
     display:flex;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 1rem;
+}
+
+table, th, tr, td {
+    border-bottom: 1px solid black;
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background-color: dodgerblue;
+    color: white;
+}
+
+td {
+    width: 25%;
 }
 
