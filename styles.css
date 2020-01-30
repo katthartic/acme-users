@@ -12,9 +12,19 @@ h1 {
     margin: 1rem;
 }
 
-div {
-    display:flex;
+div#pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0rem 2rem;
+    /* width: 100%; */
 }
+
+
+div.pages > div {
+    width: 1rem;
+}
+
 
 table {
     border-collapse: collapse;

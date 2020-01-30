@@ -19,7 +19,13 @@ function renderUsers(users){
 
 function renderPages(count){
   let pageTotal = Math.ceil(count / 50, 0)
-  console.log('render pages', pageTotal)
+  let html = []
+  for (let i = 1; i <= pageTotal; i++) {
+    html.push(
+      `<div><a href='#${i - 1}'>${i}</a></div>`
+    )
+  }
+  pageList.innerHTML = html.join('')
 }
 
 fetch('https://acme-users-api-rev.herokuapp.com/api/users') 
@@ -32,4 +38,5 @@ fetch('https://acme-users-api-rev.herokuapp.com/api/users')
 //only returns 50
 //connect page to idx of user
 //fill array based on idx + 49
+
 
