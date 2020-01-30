@@ -3,16 +3,19 @@ const pageList = document.querySelector('#pages')
 const pages = document.querySelector('#pages')
 let idx = window.location.hash.slice(1)
 
-pages.addEventListener('click', (ev) => {
-  const target = ev.target
-  const targetTag = target.tagName
-  const parentTag = target.parentElement.tagName
-  console.log(target, targetTag, parentTag)
+// let id = pages.getAttribute('data-id')
+// console.log(id)
 
-  if (targetTag === 'A' && parentTag === 'DIV') {
-  target.parentElement.classList.add('selected')
-  }
-})
+// pages.addEventListener('click', (ev) => {
+//   const target = ev.target
+//   const targetTag = target.tagName
+//   const parentTag = target.parentElement.tagName
+//   console.log(target.parentElement)
+
+//   if (targetTag === 'A' && parentTag === 'DIV') {
+//   target.parentElement.classList.add('selected')
+//   }
+// })
 
 window.addEventListener('hashchange', () => {
   idx = window.location.hash.slice(1)
@@ -38,13 +41,20 @@ function renderUsers(users){
   usersList.innerHTML = html.join('')
 }
 
-function renderPages(count){
+function renderPages(count, id){
   let pageTotal = Math.ceil(count / 50, 0)
   let html = []
+  console.log(id)
   for (let i = 1; i <= pageTotal; i++) {
-    html.push(
-      `<div><a href='#${i - 1}'>${i}</a></div>`
-    )
+    if (i - 1 === id) {
+      html.push(
+        `<div class='selected' data-id=${i - 1}><a href='#${i - 1}'>${i}</a></div>`
+      )
+    } else {
+      html.push(
+      `<div data-id=${i}><a href='#${i - 1}'>${i}</a></div>`
+      )
+    }
   }
   pageList.innerHTML = html.join('')
 }
@@ -54,6 +64,6 @@ function goFetch (id) {
     .then(response => response.json())
     .then(response => {
       renderUsers(response.users)
-      renderPages(response.count)
-})
+      renderPages(response.count, id)
+    })
 }
