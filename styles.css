@@ -20,11 +20,15 @@ div#pages {
     /* width: 100%; */
 }
 
-
-div.pages > div {
-    width: 1rem;
+div#pages > div {
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
 }
 
+.selected {
+    border: 1px black solid;
+}
 
 table {
     border-collapse: collapse;
