@@ -3,20 +3,6 @@ const pageList = document.querySelector('#pages')
 const pages = document.querySelector('#pages')
 let idx = window.location.hash.slice(1)
 
-// let id = pages.getAttribute('data-id')
-// console.log(id)
-
-// pages.addEventListener('click', (ev) => {
-//   const target = ev.target
-//   const targetTag = target.tagName
-//   const parentTag = target.parentElement.tagName
-//   console.log(target.parentElement)
-
-//   if (targetTag === 'A' && parentTag === 'DIV') {
-//   target.parentElement.classList.add('selected')
-//   }
-// })
-
 window.addEventListener('hashchange', () => {
   idx = window.location.hash.slice(1)
   goFetch(idx)
@@ -46,7 +32,7 @@ function renderPages(count, id){
   let html = []
   console.log(id)
   for (let i = 1; i <= pageTotal; i++) {
-    if (i - 1 === id) {
+    if ((i - 1) === Number(id)) {
       html.push(
         `<div class='selected' data-id=${i - 1}><a href='#${i - 1}'>${i}</a></div>`
       )
