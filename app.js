@@ -30,12 +30,11 @@ function renderUsers(users){
 function renderPages(count, id){
   let pageTotal = Math.ceil(count / 50, 0)
   let html = []
-  console.log(id)
-  for (let i = 1; i <= pageTotal; i++) {
+  for (let i = 1; i <= pageTotal; i++) { //Could also do while loop
     if ((i - 1) === Number(id)) {
       html.push(
         `<div class='selected' data-id=${i - 1}><a href='#${i - 1}'>${i}</a></div>`
-      )
+      ) //Could use ternary operator
     } else {
       html.push(
       `<div data-id=${i}><a href='#${i - 1}'>${i}</a></div>`
